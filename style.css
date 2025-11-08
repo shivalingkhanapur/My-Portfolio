@@ -1,0 +1,174 @@
+/* ===== Base ===== */
+* { box-sizing: border-box; }
+:root {
+  --bg: #0f1220;
+  --fg: #e7ecf7;
+  --muted: #a9b3c9;
+  --card: #14182b;
+  --accent: #7cc5ff;
+  --paper: #fff7e6;
+  --paper-shadow: rgba(0,0,0,.25);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+}
+
+.container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+
+.section { padding: 80px 0; }
+.section.alt { background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent); }
+
+h1, h2, h3 { line-height: 1.15; margin: 0 0 14px; }
+h2 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); }
+p { margin: 0 0 12px; color: var(--muted); }
+
+.site-header {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(15,18,32,.7); backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.site-header .container {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 0;
+}
+.brand { font-weight: 800; letter-spacing: .5px; font-size: 1.1rem; }
+nav a { color: var(--muted); margin-left: 18px; text-decoration: none; }
+nav a:hover { color: var(--fg); }
+
+.hero { padding-top: 100px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.card {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+/* ===== Stop‑motion / Cutout Splash ===== */
+#splash {
+  position: fixed; inset: 0;
+  background: radial-gradient(1200px 700px at 50% 20%, #182137, #0b0e1b);
+  display: grid; place-items: center;
+  z-index: 999;
+}
+
+.scene {
+  position: relative;
+  width: min(900px, 95vw);
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 2px solid rgba(255,255,255,.08);
+  box-shadow: 0 40px 120px rgba(0,0,0,.6);
+  background: #0b0e1b;
+}
+
+.paper {
+  position: absolute;
+  filter: drop-shadow(0 6px 0.6rem var(--paper-shadow));
+  background: repeating-linear-gradient(
+    135deg,
+    var(--paper) 0 10px,
+    #fff1d6 10px 20px
+  );
+  image-rendering: pixelated; /* sells the handmade vibe */
+  transform-origin: center;
+}
+
+/* Layers */
+.sky { inset: 0; background: linear-gradient(#89b9ff, #d7ecff 60%, #fff8e8); }
+.sun { width: 120px; height: 120px; border-radius: 50%;
+  top: 40px; right: 60px; background: radial-gradient(circle at 30% 30%, #ffe580, #ffb347);
+  animation: bob 3s steps(12) infinite alternate;
+}
+.ground { left: -5%; right: -5%; bottom: -10%;
+  height: 40%; background: linear-gradient(#c2e59c, #64b3f4);
+  transform: rotate(-2deg);
+}
+.mountain {
+  bottom: 24%; width: 40vw; max-width: 520px; height: 38vh;
+  background: linear-gradient(180deg, #cad6ff, #6b84c9);
+  clip-path: polygon(0 100%, 20% 60%, 40% 75%, 60% 35%, 80% 55%, 100% 20%, 100% 100%);
+}
+.m1 { left: -8%; transform: rotate(-2deg); }
+.m2 { right: -8%; transform: rotate(3deg) scale(1.1); }
+
+/* Character pieces */
+.character { position: absolute; bottom: 26%; left: 10%; width: 160px; height: 230px; }
+.character .head { width: 70px; height: 70px; border-radius: 50%; background: #ffe6c9; top: 0; left: 45px; position: absolute; }
+.character .body { width: 120px; height: 120px; border-radius: 20px; background: #2dd4bf; top: 66px; left: 20px; position: absolute; }
+.character .arm { width: 20px; height: 90px; background: #ffe6c9; top: 80px; position: absolute; border-radius: 12px; transform-origin: top center; }
+.character .arm.left { left: 10px; animation: wave 2.2s steps(10) infinite; }
+.character .arm.right { right: 10px; }
+
+/* Title card */
+.title-card {
+  position: absolute; bottom: 12%; right: 7%;
+  padding: 16px 22px;
+  background: #fffaf0;
+  color: #1a1a1a;
+  border-radius: 14px;
+  transform: rotate(-2deg);
+  border: 2px solid #1112;
+  text-align: center;
+  box-shadow: 6px 8px 0 #00000030;
+}
+.title-card h1 { margin: 0; font-size: clamp(1.2rem, 2.4vw, 2rem); }
+.title-card p { margin: 6px 0 0; color: #444; font-weight: 600; letter-spacing: .3px; }
+
+.btn {
+  position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%) rotate(1deg);
+  background: #1111;
+  color: #fff;
+  border: 2px dashed rgba(255,255,255,.6);
+  padding: 10px 18px; border-radius: 12px;
+  cursor: pointer; font-weight: 700; letter-spacing: .6px;
+  backdrop-filter: blur(2px);
+  transition: transform .15s ease;
+}
+.btn:hover { transform: translateX(-50%) rotate(0deg) scale(1.04); }
+
+/* Stop‑motion feel with stepped keyframes */
+.stop-step { animation-timing-function: steps(8); }
+@keyframes bob {
+  0% { transform: translateY(-3px) rotate(-.8deg); }
+  100% { transform: translateY(6px) rotate(.8deg); }
+}
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(35deg); }
+}
+
+/* Fade out splash when entering */
+#splash.hide {
+  opacity: 0; pointer-events: none;
+  transition: opacity .8s ease;
+}
+
+/* ===== Skills grid ===== */
+.skills-grid {
+  list-style: none; padding: 0; margin: 18px 0 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px;
+}
+.skills-grid li {
+  background: #1116; border: 1px dashed rgba(255,255,255,.12);
+  padding: 10px 12px; border-radius: 12px;
+}
+
+/* ===== Contact ===== */
+.contact-list { list-style: none; padding: 0; margin: 18px 0 0; }
+.contact-list li { margin: 6px 0; }
+.contact-list a { color: var(--accent); text-decoration: none; }
+.contact-list a:hover { text-decoration: underline; }
+
+/* ===== Footer ===== */
+.site-footer { padding: 30px 0 50px; text-align: center; color: var(--muted); }
