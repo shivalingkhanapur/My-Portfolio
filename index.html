@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shivaling Khanapur — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Stop‑motion / cutout intro -->
+  <div id="splash" aria-label="Intro animation" role="dialog" aria-modal="true">
+    <div class="scene">
+      <!-- layered paper sky -->
+      <div class="paper sky"></div>
+      <!-- sun -->
+      <div class="paper sun stop-step"></div>
+      <!-- mountains -->
+      <div class="paper mountain m1 stop-step"></div>
+      <div class="paper mountain m2 stop-step"></div>
+      <!-- ground -->
+      <div class="paper ground"></div>
+      <!-- character cutout -->
+      <div class="character stop-step">
+        <div class="head stop-step"></div>
+        <div class="body stop-step"></div>
+        <div class="arm left stop-step"></div>
+        <div class="arm right stop-step"></div>
+      </div>
+      <!-- title card -->
+      <div class="title-card stop-step">
+        <h1>Shivaling Khanapur</h1>
+        <p>DevOps & Cloud Engineer</p>
+      </div>
+      <button id="enterBtn" class="btn stop-step" aria-label="Enter portfolio">Enter</button>
+    </div>
+  </div>
+
+  <!-- Main site -->
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">Shivaling Khanapur</h1>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="section hero">
+      <div class="container">
+        <h2>Hello 👋</h2>
+        <p>
+          I’m a DevOps & Cloud Engineer focused on automation across Linux, AWS, Docker/Kubernetes, and CI/CD.
+          I love turning repeatable tasks into reliable pipelines and infrastructure.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <h2>Skills</h2>
+        <ul class="skills-grid">
+          <li>AWS (EC2, S3, IAM, VPC, RDS, Lambda, Route 53)</li>
+          <li>Linux (AlmaLinux, Ubuntu, RHEL)</li>
+          <li>Docker & Kubernetes</li>
+          <li>Terraform (IaC)</li>
+          <li>Ansible (Config Mgmt)</li>
+          <li>Jenkins & GitHub Actions (CI/CD)</li>
+          <li>Git & GitHub</li>
+          <li>Python & Bash</li>
+          <li>Networking: TCP/IP, DNS, DHCP, HTTP/HTTPS, ELB, Security Groups</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects" class="section alt">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Linux System Monitoring Service</h3>
+            <p>
+              Bash + <code>systemd</code> service that logs CPU & memory at intervals,
+              exports CSV, and integrates with Cockpit for real‑time monitoring.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Automatic Blackboard Cleaner</h3>
+            <p>
+              Fabricated a linear belt‑drive mechanism to automate blackboard cleaning,
+              applying automation & safety‑first design thinking.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact</h2>
+        <ul class="contact-list">
+          <li>Email: <a href="mailto:sw378951@gmail.com">sw378951@gmail.com</a></li>
+          <li>Phone: <a href="tel:+918296504874">+91 82965 04874</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/shivaling-khanapur-9358a730b" target="_blank" rel="noreferrer">/in/shivaling-khanapur-9358a730b</a></li>
+          <li>GitHub: <a href="https://github.com/shivalingkhanapur" target="_blank" rel="noreferrer">github.com/shivalingkhanapur</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Shivaling Khanapur • Built with a cutout stop‑motion vibe</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
