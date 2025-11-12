@@ -1,22 +1,19 @@
-const enterBtn = document.getElementById('enterBtn');
-const splash = document.getElementById('splash');
-const yearEl = document.getElementById('year');
+// Smooth animation when scrolling into sections
+const sections = document.querySelectorAll(".section");
 
-yearEl.textContent = new Date().getFullYear();
-
-enterBtn.addEventListener('click', () => {
-  splash.classList.add('hide');
-  setTimeout(() => splash.remove(), 900);
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      sec.style.opacity = "1";
+      sec.style.transform = "translateY(0)";
+    }
+  });
 });
 
-const jitterTargets = document.querySelectorAll('.stop-step');
+// Floating text animation
+const text = document.querySelector('.animate-text');
+const sub = document.querySelector('.animate-sub');
 
-function jitterFrame() {
-  jitterTargets.forEach(el => {
-    const r1 = (Math.random() - 0.5) * 1.8;
-    const r2 = (Math.random() - 0.5) * 0.9;
-    el.style.transform = `translate(${r1}px, ${-r1}px) rotate(${r2}deg)`;
-  });
-}
-
-setInterval(jitterFrame, 140);
+setTimeout(() => text.classList.add('active'), 500);
+setTimeout(() => sub.classList.add('active'), 1000);
